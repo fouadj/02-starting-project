@@ -14,6 +14,9 @@ describe('MainContent', () => {
   it('should show the help area after clicking the button', async () => {
     render(<MainContent />);
 
+    /*
+    buttin added
+    */
     const button = screen.getByRole('button');
     await userEvent.click(button);
     expect(screen.getByTestId('help-area')).toBeInTheDocument();
