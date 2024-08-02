@@ -17,8 +17,6 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    outputs:
-      out-file: ${{ steps.publish.outputs.out-file}}
     steps:
       - name: Get Code
         uses: actions/checkout@v3
@@ -30,9 +28,6 @@ jobs:
         run: npm ci 
       - name: Build website
         run: npm run build
-      - name: Publish JS filename
-        id: publisg
-        run: find dist/assets/*.js -type f -execdir echo 'out-file={} >> $GITHUB_OUTPUT' ';'
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -51,7 +46,5 @@ jobs:
           name: dist-files
       - name: output contents
         run: ls
-      - name: output file
-        run: echo ${{ needs.build.outputs.out-file}}
       - name: Deploying
         run: echo "Deploying done!"
