@@ -1,13 +1,7 @@
 name: Test Projekt
 on: push
-# env variable visible for all jobs
-env:
-  DB_NAME: learning
 jobs:
   test:
-    # env level job
-    env:
-      DB_ADDRESS: local
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
