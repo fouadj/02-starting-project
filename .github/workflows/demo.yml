@@ -31,7 +31,7 @@ jobs:
       - name: Build website
         run: npm run build
       - name: Publish JS filename
-        id: publisg
+        id: publish
         run: find dist/assets/*.js -type f -execdir echo 'out-file={}' >> $GITHUB_OUTPUT ';'
       - name: upload artifact
         uses: actions/upload-artifact@v3
